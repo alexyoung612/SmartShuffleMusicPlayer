@@ -17,10 +17,10 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
  
 /**
- * This is an example program that demonstrates how to play back an audio file
+ * This is a basic program that demonstrates how to play back an audio file
  * using the Clip in Java Sound API.
- * @author www.codejava.net
- *
+ * @author alexy
+ * 
  */
 public class MusicPlayer implements LineListener {
      
@@ -90,12 +90,6 @@ public class MusicPlayer implements LineListener {
             System.out.println("Playback completed.");
         }
  
-    }
- 
-    public static void main(String[] args) {
-        String audioFilePath = "C:/Users/alexy/Music/Dreams.wav";
-        MusicPlayer player = new MusicPlayer();
-        player.play(audioFilePath);
     }
  
 }

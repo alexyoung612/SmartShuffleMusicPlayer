@@ -4,7 +4,8 @@
 package data;
 
 /**
- * @author alexy
+ * this class represents a Song for use in the MusicPlayer
+ * @author Alex Young
  *
  */
 public class Song {
@@ -12,13 +13,14 @@ public class Song {
 	private String fileName;
 	private int rating;
 	/**
-	 * @param fileName
-	 * @param rating
+	 * constructor
+	 * @param fileName to set
+	 * @param rating to set
 	 */
 	public Song(String fileName, int rating) {
 		super();
-		this.fileName = fileName;
-		this.rating = rating;
+		setFileName(fileName);
+		setRating(rating);
 	}
 	/**
 	 * @return the fileName
@@ -44,6 +46,12 @@ public class Song {
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
+	
+	@Override
+	public String toString() {
+		return fileName;
+	}
+	
 	
 	
 }
