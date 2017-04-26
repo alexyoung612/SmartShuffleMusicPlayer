@@ -32,8 +32,10 @@ public class SmartShuffleMusicPlayer {
 		model = new SongListModel();
 		controller = new MusicPlayerController(view, model);
 		
+		controller.start();
+		
 		// create MusicPlayer. currently used as a test
-        MusicPlayer player = new MusicPlayer();
-        player.play(TEST_AUDIOFILE_PATH);
+        //MusicPlayer player = new MusicPlayer();
+        //player.play(TEST_AUDIOFILE_PATH);
     }
 }
