@@ -46,6 +46,9 @@ public class MusicPlayerView {
 		});
 	}
 
+	public void setVisible(boolean b){
+		frame.setVisible(b);
+	}
 	/**
 	 * Create the application.
 	 */
@@ -65,28 +68,17 @@ public class MusicPlayerView {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		//topPanel = new JPanel();
-		//frame.getContentPane().add(topPanel, BorderLayout.CENTER);
-		
+
 		bottomPanel = new JPanel();
 		frame.getContentPane().add(bottomPanel, BorderLayout.SOUTH);
 		
-		btnPrevious = new JButton("<");
-//		btnPrevious.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent arg0) {
-//			}
-//		});
+		btnPrevious = new JButton(ButtonCommand.PREVIOUS.toString());
 		bottomPanel.add(btnPrevious);
 		
-		btnPlayPause = new JButton("Play");
+		btnPlayPause = new JButton(ButtonCommand.PLAY.toString());
 		bottomPanel.add(btnPlayPause);
 		
-		btnNext = new JButton(">");
-//		btnNext.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//			}
-//		});
+		btnNext = new JButton(ButtonCommand.NEXT.toString());
 		bottomPanel.add(btnNext);
 		
 
@@ -112,11 +104,17 @@ public class MusicPlayerView {
 	 * change the text of the play/pause button
 	 * @param text the string to set to play/pause
 	 */
-	public void setBtnPlayPauseText(String text){
-		if(btnPlayPause == null || text == null){
+	public void switchBtnPlayPause(){
+		if(btnPlayPause == null){
 			return;
 		}
-		btnPlayPause.setText(text);
+		if(btnPlayPause.getText() == ButtonCommand.PLAY.toString()){
+			btnPlayPause.setText(ButtonCommand.PAUSE.toString());
+			btnPlayPause.setActionCommand(ButtonCommand.PAUSE.toString());
+			return;
+		}
+		btnPlayPause.setText(ButtonCommand.PLAY.toString());
+		btnPlayPause.setActionCommand(ButtonCommand.PLAY.toString());
 	}
 	
 	/**
@@ -124,6 +122,11 @@ public class MusicPlayerView {
 	 * @param listener to connect to all buttons
 	 */
 	public void setButtonActionListener(ActionListener listener){
+		
+		btnPrevious.setActionCommand(ButtonCommand.PREVIOUS.toString());
+		btnNext.setActionCommand(ButtonCommand.NEXT.toString());
+		btnPlayPause.setActionCommand(ButtonCommand.PLAY.toString());
+		
 		btnPrevious.addActionListener(listener);
 		btnNext.addActionListener(listener);
 		btnPlayPause.addActionListener(listener);

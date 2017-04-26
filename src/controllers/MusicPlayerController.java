@@ -30,6 +30,12 @@ public class MusicPlayerController{
 		this.view = view;
 		this.model = model;
 		
+		connectListeners();
+		
+	}
+	
+	public void start(){
+		view.setVisible(true);
 	}
 
 	/**
@@ -39,11 +45,11 @@ public class MusicPlayerController{
 	public void buttonPress(ButtonCommand command){
 		switch(command){
 		case PLAY:
-			view.setBtnPlayPauseText(ButtonCommand.PAUSE.toString());
+			view.switchBtnPlayPause();
 			//model.playSong(view.getSelectedSong());
 			break;
 		case PAUSE:
-			view.setBtnPlayPauseText(ButtonCommand.PLAY.toString());
+			view.switchBtnPlayPause();
 			//model.stopSong();
 			break;
 		case PREVIOUS:
@@ -63,6 +69,7 @@ public class MusicPlayerController{
 		view.setButtonActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//TODO add enums for single button listener
+				buttonPress(ButtonCommand.get(arg0.getActionCommand()));
 			}
 		});
 	}
